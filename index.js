@@ -1,7 +1,7 @@
 var through = require('through2'),
     gutil = require('gulp-util'),
     ExecBuffer = require('exec-buffer'),
-    kss = require('kss-node').path;
+    kss = require('kss').path;
 
 // consts
 const PLUGIN_NAME = 'gulp-zebrakss';
