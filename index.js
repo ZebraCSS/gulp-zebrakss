@@ -1,7 +1,10 @@
+'use strict';
+
 var through = require('through2'),
     gutil = require('gulp-util'),
-    ExecBuffer = require('exec-buffer'),
-    kss = require('kss').path;
+    path = require('path'),
+    dust = require('catberry-dust'),
+    kss = require('kss');
 
 // consts
 const PLUGIN_NAME = 'gulp-zebrakss';
@@ -9,17 +12,10 @@ const PLUGIN_NAME = 'gulp-zebrakss';
 // plugin level function (dealing with files)
 function gulpZebraKSS(options) {
     options = options || {};
+    options.template = options.template || path.join(__dirname, 'lib', 'template', 'index.dust');
 
-    var exec = new ExecBuffer(),
-        args = [exec.src()];
-
-    if (options.template) {
-        args.push('--template', options.template);
-    }
-
-    if (options.preprocessor) {
-        args.push('--' + options.preprocessor);
-    }
+    var buffer = [],
+        firstFile = null;
 
     return through.obj(function (file, enc, cb) {
         if (file.isNull()) {
@@ -32,18 +28,27 @@ function gulpZebraKSS(options) {
             return;
         }
 
-        exec.use(kss, args)
-            .run(file.contents, function (err, buf) {
-                if (err) {
-                    cb(new gutil.PluginError(PLUGIN_NAME, err, {
-                        fileName: file.path
-                    }));
-                    return;
-                }
+        if (!firstFile) {
+            firstFile = file;
+        }
 
-                file.contents = buf;
-                cb(null, file);
-            });
+        buffer.push(file.contents.toString('utf8'));
+    }, function (cb) {
+        if (!firstFile) {
+            cb();
+            return;
+        }
+
+        kss.parse(buffer, options.kssOptions, function (err, stylegude) {
+            if (err) {
+                cb(err);
+                return;
+            }
+
+            console.log(stylegude);
+
+            cb();
+        });
     });
 }
 

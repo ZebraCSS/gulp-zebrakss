@@ -21,6 +21,7 @@
         "email": "julia.rechkunova@gmail.com"
     },
     "dependencies": {
+        "catberry-dust": "^3.0.3",
         "exec-buffer": "^1.0.1",
         "gulp-util": "^3.0.1",
         "kss": "^1.0.0",

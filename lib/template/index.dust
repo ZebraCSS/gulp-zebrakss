@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Living Style Guide</title>
+</head>
+<body>
+	<section>
+		<h1>Living Style Guide</h1>
+		{?sections}
+			<ul>
+				{#sections}
+                    <li>{.header}</li>
+                {/sections}
+			</ul>
+		{/sections}
+	</section>
+</body>
+</html>
