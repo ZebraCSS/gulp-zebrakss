@@ -1,0 +1,34 @@
+{
+    "name": "gulp-zebrakss",
+    "version": "0.0.1",
+    "description": "Gulp plugin for KSS (Knyle Style Sheets)",
+    "main": "index.js",
+    "scripts": {
+        "setup": "npm install"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ZebraCSS/gulp-zebrakss.git"
+    },
+    "keywords": [
+        "kss",
+        "documentation",
+        "styleguide",
+        "gulp"
+    ],
+    "author": {
+        "name": "Julia Rechkunova",
+        "email": "julia.rechkunova@gmail.com"
+    },
+    "dependencies": {
+        "exec-buffer": "^1.0.1",
+        "gulp-util": "^3.0.1",
+        "kss": "^1.0.0",
+        "through2": "^0.6.2"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ZebraCSS/gulp-zebrakss/issues"
+    },
+    "homepage": "https://github.com/ZebraCSS/gulp-zebrakss"
+}
