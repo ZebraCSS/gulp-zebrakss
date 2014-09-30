@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "catberry-dust": "^3.0.3",
+        "fs-extra": "^0.12.0",
         "gulp-util": "^3.0.1",
         "kss": "^1.0.0",
         "promise": "^6.0.0",

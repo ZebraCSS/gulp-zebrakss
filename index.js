@@ -6,6 +6,7 @@ var through = require('through2'),
     Promise = require('promise'),
     Dust = require('catberry-dust').Dust,
     kss = require('kss'),
+    fsExtra = require('fs-extra'),
     fs = require('fs');
 
 global.Promise = Promise;
@@ -17,17 +18,12 @@ var PLUGIN_NAME = 'gulp-zebrakss';
 function gulpZebraKSS(options) {
     options = options || {};
     options.kssOptions = options.kssOptions || {};
-    options.template = options.template || path.join(__dirname, 'lib', 'template', 'index.dust');
+    options.styleGuideName = options.styleGuideName || 'styleguide';
+    options.styleFileName = options.styleFileName || 'style';
+    options.templateDirectory = options.templateDirectory || path.join(__dirname, 'lib', 'template');
 
     var buffer = [],
-        firstFile = null,
-        dust = new Dust();
-
-    var templateName = 'styleguideTemplate',
-        template = fs.readFileSync(options.template, 'utf-8'),
-        compiledTemplate = dust.templateManager.compile(template);
-
-    dust.templateManager.registerCompiled(templateName, compiledTemplate);
+        firstFile = null;
 
     return through.obj(function (file, enc, cb) {
         if (file.isNull()) {
@@ -53,35 +49,58 @@ function gulpZebraKSS(options) {
             return;
         }
 
-        var self = this;
+        options.destDirectory =
+            path.join(options.destDirectory, options.styleGuideName) ||
+            path.join(firstFile.base, options.styleGuideName);
 
-        kss.parse(buffer, options.kssOptions, function (err, styleguide) {
-            if (err) {
-                cb(err);
-                return;
-            }
+        fsExtra.copy(
+            options.templateDirectory,
+            options.destDirectory,
+            function(err) {
+                if (err) {
+                    cb(new gutil.PluginError(PLUGIN_NAME, err));
+                    return;
+                }
 
-            dust.render(templateName, reformatStyleguide(styleguide))
-                .then(function (content) {
-                    self.push(new gutil.File({
-                        cwd: firstFile.cwd,
-                        base: firstFile.base,
-                        path: path.join(firstFile.base, 'styleguide.html'),
-                        contents: new Buffer(content)
-                    }));
-
-                    cb();
-                }, function (error) {
+                parseCSS(buffer, options, function (error) {
                     cb(new gutil.PluginError(PLUGIN_NAME, error));
                 });
-        });
+            });
     });
 }
 
-function reformatStyleguide (styleguide) {
-    var dcFromStyleguide = [];
+function parseCSS (buffer, options, callback) {
+    var dust = new Dust(),
+        templateName = 'styleguideTemplate',
+        index = path.join(options.destDirectory, 'index.html'),
+        template = fs.readFileSync(index, 'utf-8'),
+        compiledTemplate = dust.templateManager.compile(template);
+
+    dust.templateManager.registerCompiled(templateName, compiledTemplate);
+
+    kss.parse(buffer, options.kssOptions, function (kssError, styleguide) {
+        if (kssError) {
+            callback(kssError);
+            return;
+        }
+
+        var dc = reformatStyleGuide(styleguide);
+        dc.styleFileName = options.styleFileName;
+
+        dust.render(templateName, dc)
+            .then(function (content) {
+                fs.writeFileSync(index, content);
+                callback();
+            }, function (dustError) {
+                callback(dustError);
+            });
+    });
+}
+
+function reformatStyleGuide (styleguide) {
+    var dcFromStyleGuide = [];
     styleguide.section().forEach(function (section) {
-        dcFromStyleguide.push({
+        dcFromStyleGuide.push({
             reference: section.reference(),
             header: section.header(),
             markup: section.markup(),
@@ -101,7 +120,7 @@ function reformatStyleguide (styleguide) {
 
     return {
         styleguide: {
-            sections: dcFromStyleguide
+            sections: dcFromStyleGuide
         }
     };
 }
