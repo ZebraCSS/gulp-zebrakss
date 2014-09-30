@@ -14,10 +14,12 @@ var gulp = require('gulp'),
     path = require('path');
 
 gulp.task('styleguide', function () {
-    gulp.src(path.join('.', 'index.less'))
+    gulp.src(path.join('.', 'zebra.less'))
         .pipe(zebrakss({
             styleFileName: 'zebra',
             destDirectory: path.join(__dirname, '.', 'build')
         }));
 });
 ```
+
+Example will generate styleguide in ``./build/styleguide/`` and referenced to ``./build/zebra.css``.
