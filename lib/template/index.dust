@@ -5,15 +5,67 @@
 	<title>Living Style Guide</title>
 </head>
 <body>
-	<section>
-		<h1>Living Style Guide</h1>
-		{?sections}
-			<ul>
-				{#sections}
-                    <li>{.header}</li>
-                {/sections}
-			</ul>
-		{/sections}
-	</section>
+<section>
+	<h1>Living Style Guide</h1>
+    {?styleguide.sections}
+	    <p>
+            {#.styleguide.sections}
+                <div>
+                    {.reference} <a href="#{.reference}">{.header}</a>
+                </div>
+            {/.styleguide.sections}
+		</p>
+    {/styleguide.sections}
+	<hr/>
+    {#styleguide.sections}
+		<h2 id="{.reference}">{.reference} {.header}</h2>
+        {?.isDeprecated}
+			<p>
+				<i>Deprecated</i>
+			</p>
+        {/.isDeprecated}
+        {?.isExperimental}
+			<p>
+				<i>Experimental</i>
+			</p>
+        {/.isExperimental}
+
+		<p>{.description|s}</p>
+
+		<p>
+			<code>
+                {.markup}
+			</code>
+		</p>
+
+        {?.modifiers}
+			<p>
+                <div>
+                    Modifiers:
+                </div>
+                <table>
+                    {#.modifiers}
+                        <tr>
+                            <td>
+                                <div>
+                                    {.markup|s}
+                                </div>
+                            </td>
+                            <td>
+                                <code>
+                                    {.name}
+                                </code>
+                            </td>
+                            <td>
+                                {.description|s}
+                            </td>
+                        </tr>
+                    {/.modifiers}
+                </table>
+			</p>
+        {/.modifiers}
+
+    {/styleguide.sections}
+</section>
 </body>
 </html>

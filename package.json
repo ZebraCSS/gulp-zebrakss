@@ -22,9 +22,9 @@
     },
     "dependencies": {
         "catberry-dust": "^3.0.3",
-        "exec-buffer": "^1.0.1",
         "gulp-util": "^3.0.1",
         "kss": "^1.0.0",
+        "promise": "^6.0.0",
         "through2": "^0.6.2"
     },
     "license": "MIT",
