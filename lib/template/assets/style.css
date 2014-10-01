@@ -1,0 +1,158 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/**
+Zebra header
+
+Markup: <div class="zebraHeader">Header</div>
+
+Styleguide 1.1
+*/
+.zebraHeader {
+	padding: 20px;
+	background-color: #f5f5f5;
+	border-bottom: 1px solid #e5e5e5;
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+
+/**
+Zebra content
+
+Markup: <div class="zebraContent">Content</div>
+
+Styleguide 1.2
+*/
+.zebraContent {
+	padding: 20px;
+}
+
+/**
+Zebra text
+
+Markup: <div class="zebraText">Text example</div>
+
+Styleguide 2.1
+*/
+.zebraText {
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/**
+Zebra heading
+
+Markup: <div class="zebraHeading {$modifiers}">Heading example</div>
+
+zebraHeading--1 - H1.
+zebraHeading--2 - H2.
+zebraHeading--3 - H3.
+
+Styleguide 2.2
+*/
+.zebraHeading {
+	display: block;
+	font-weight: 500;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.zebraHeading--1 {
+	height: 39px;
+	line-height: 40px;
+	font-size: 36px;
+}
+
+.zebraHeading--2 {
+	height: 33px;
+	line-height: 33px;
+	font-size: 30px;
+}
+
+.zebraHeading--3 {
+	height: 26px;
+	line-height: 26px;
+	font-size: 24px;
+}
+
+/**
+Zebra link
+
+Markup: <a href="#" class="zebraLink">Link example</div>
+
+Styleguide 3.1
+*/
+.zebraLink,
+.zebraLink:visited {
+	color: #4183c4;
+	text-decoration: none;
+}
+
+.zebraLink:active,
+.zebraLink:hover,
+.zebraLink:focus {
+	color: #4183c4;
+	text-decoration: underline;
+}
+
+/**
+Zebra code
+
+Markup: <code class="zebraCode">Code example</code>
+
+Styleguide 4.1
+*/
+.zebraCode {
+	box-sizing: border-box;
+	padding: 3px;
+	margin: 0;
+	background-color: rgba(0,0,0,0.04);
+	border-radius: 3px;
+}
+
+/**
+Zebra code
+
+Markup: <pre class="zebraBlockCode">
+	<code>Code example</code>
+</pre>
+
+Styleguide 4.2
+*/
+.zebraBlockCode {
+	padding: 10px;
+	margin: 0;
+	background-color: rgba(0,0,0,0.04);
+	border-radius: 3px;
+}
+.zebraBlockCode .zebraCode {
+	background-color: transparent;
+}
+
+/**
+Zebra example
+
+Markup: <table class="zebraExample">
+	<tr>
+		<td class="zebraExample-component">Component</td>
+		<td class="zebraExample-modifier">Modifier</td>
+		<td class="zebraExample-description">Description</td>
+	</tr>
+</table>
+
+Styleguide 4.3
+*/
+.zebraExample {
+	display: block;
+	width: 100%;
+}
+.zebraExample-component {
+	width: 50%;
+}
+.zebraExample-modifier {
+	width: 25%;
+	text-align: center;
+}
+.zebraExample-description {
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

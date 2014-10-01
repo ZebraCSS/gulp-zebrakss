@@ -3,67 +3,85 @@
 <head>
 	<meta charset="utf-8">
 	<title>Living Style Guide</title>
-	<link rel="stylesheet" href="/assets/style.css">
-	<link rel="stylesheet" href="../{styleFileName}.css">
+	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="../{styleFileName}">
 </head>
 <body>
-<section>
-	<h1>Living Style Guide</h1>
+<section class="zebraHeader">
+	<h1 class="zebraHeading zebraHeading--1">Living Style Guide</h1>
     {?styleguide.sections}
-	    <p>
+	    <p class="zebraText">
             {#.styleguide.sections}
                 <div>
-                    {.reference} <a href="#{.reference}">{.header}</a>
+                    {.reference} <a class="zebraLink" href="#{.reference}">{.header}</a>
                 </div>
             {/.styleguide.sections}
 		</p>
     {/styleguide.sections}
-	<hr/>
+</section>
+<section class="zebraContent">
     {#styleguide.sections}
-		<h2 id="{.reference}">{.reference} {.header}</h2>
-        {?.isDeprecated}
+		<h2 class="zebraHeading zebraHeading--2" id="{.reference}">{.reference} {.header}</h2>
+        <div class="zebraText">
+			{?.isDeprecated}
 			<p>
 				<i>Deprecated</i>
 			</p>
-        {/.isDeprecated}
-        {?.isExperimental}
+			{/.isDeprecated}
+			{?.isExperimental}
 			<p>
 				<i>Experimental</i>
 			</p>
-        {/.isExperimental}
+			{/.isExperimental}
 
-		<p>{.description|s}</p>
+			<p>{.description|s}</p>
+        </div>
 
-		<p>
-			<code>
+		<pre class="zebraBlockCode">
+			<code class="zebraCode">
                 {.markup}
 			</code>
-		</p>
+		</pre>
 
         {?.modifiers}
 			<p>
-                <div>
-                    Modifiers:
-                </div>
-                <table>
+                <table class="zebraExample">
                     {#.modifiers}
                         <tr>
-                            <td>
+                            <td class="zebraExample-component">
                                 <div>
                                     {.markup|s}
                                 </div>
                             </td>
-                            <td>
-                                <code>
+                            <td class="zebraExample-modifier">
+                                <code class="zebraCode">
                                     {.name}
                                 </code>
                             </td>
-                            <td>
+                            <td class="zebraExample-description">
                                 {.description|s}
                             </td>
                         </tr>
                     {/.modifiers}
                 </table>
+			</p>
+		{:else}
+			<p>
+				<table class="zebraExample">
+					<tr>
+						<td class="zebraExample-component">
+							<div>
+								{.markup|s}
+							</div>
+						</td>
+						<td class="zebraExample-modifier">
+
+						</td>
+						<td class="zebraExample-description">
+
+						</td>
+					</tr>
+				</table>
 			</p>
         {/.modifiers}
 

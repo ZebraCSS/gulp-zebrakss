@@ -19,7 +19,7 @@ function gulpZebraKSS(options) {
 	options = options || {};
 	options.kssOptions = options.kssOptions || {};
 	options.styleGuideName = options.styleGuideName || 'styleguide';
-	options.styleFileName = options.styleFileName || 'style';
+	options.styleFileName = options.styleFileName || 'style.css';
 	options.templateDirectory =
 		options.templateDirectory ||
 		path.join(__dirname, 'lib', 'template');

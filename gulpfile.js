@@ -1,23 +1,13 @@
-# gulp-zebrakss
-
-Gulp plugin for KSS ([Knyle Stype Sheets](http://warpspire.com/kss/)) documentation generation.
-
-This plugin is based on [kss-node](https://github.com/hughsk/kss-node) and generates a styleguide based on code documentation.
-
-**Plugin isn't ready**
-
-Example:
-
-```js
 'use strict';
 
 var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	less = require('gulp-less'),
-	zebrakss = require('gulp-zebrakss'),
+	zebrakss = require('./'),
 	path = require('path');
 
 var styleName = 'zebra.css',
+	//sourceStyles = path.join('.', 'lib', 'template', 'assets', 'style.css'),
 	sourceStyles = path.join('.', 'test', 'demo', 'index.less'),
 	destinationDirectory = path.join('.', 'build');
 
@@ -46,6 +36,3 @@ gulp.task('generate-style-guide', function () {
 
 gulp.task('build', ['publish-your-site', 'generate-style-guide']);
 gulp.task('default', ['build']);
-```
-
-Example will generate styleguide in ``./build/styleguide/`` and referenced to ``./build/zebra.css``.
