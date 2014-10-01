@@ -4,7 +4,8 @@
     "description": "Gulp plugin for KSS (Knyle Style Sheets)",
     "main": "index.js",
     "scripts": {
-        "setup": "npm install"
+        "setup": "npm install",
+        "test": "jshint ./ && jscs ./"
     },
     "repository": {
         "type": "git",
@@ -32,5 +33,9 @@
     "bugs": {
         "url": "https://github.com/ZebraCSS/gulp-zebrakss/issues"
     },
-    "homepage": "https://github.com/ZebraCSS/gulp-zebrakss"
+    "homepage": "https://github.com/ZebraCSS/gulp-zebrakss",
+    "devDependencies": {
+        "jscs": "^1.6.2",
+        "jshint": "^2.5.6"
+    }
 }
