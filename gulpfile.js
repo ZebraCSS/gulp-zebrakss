@@ -40,6 +40,7 @@ gulp.task('test', function () {
 	gulp.src(path.join('.', 'lib', 'template', 'assets', 'style.css'))
 		.pipe(less())
 		.pipe(csslint({
+			// https://github.com/CSSLint/csslint/wiki/Rules-by-ID
 			'box-sizing': false,
 			'fallback-colors': false
 		}))
