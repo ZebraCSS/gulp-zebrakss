@@ -1,44 +1,46 @@
 {
-  "name": "gulp-zebrakss",
-  "version": "0.0.1",
-  "description": "Gulp plugin for KSS (Knyle Style Sheets)",
-  "main": "index.js",
-  "scripts": {
-    "setup": "npm install",
-    "test": "jshint ./ && jscs ./"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ZebraCSS/gulp-zebrakss.git"
-  },
-  "keywords": [
-    "kss",
-    "documentation",
-    "styleguide",
-    "gulp"
-  ],
-  "author": {
-    "name": "Julia Rechkunova",
-    "email": "julia.rechkunova@gmail.com"
-  },
-  "dependencies": {
-    "catberry-dust": "^3.0.3",
-    "fs-extra": "^0.12.0",
-    "gulp-util": "^3.0.1",
-    "kss": "^1.0.0",
-    "promise": "^6.0.0",
-    "through2": "^0.6.2"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ZebraCSS/gulp-zebrakss/issues"
-  },
-  "homepage": "https://github.com/ZebraCSS/gulp-zebrakss",
-  "devDependencies": {
-    "gulp": "^3.8.8",
-    "gulp-less": "^1.3.6",
-    "gulp-rename": "^1.2.0",
-    "jscs": "^1.6.2",
-    "jshint": "^2.5.6"
-  }
+	"name": "gulp-zebrakss",
+	"version": "0.0.1",
+	"description": "Gulp plugin for KSS (Knyle Style Sheets)",
+	"main": "index.js",
+	"scripts": {
+		"setup": "npm install",
+		"test": "jshint ./ && jscs ./ && gulp test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ZebraCSS/gulp-zebrakss.git"
+	},
+	"keywords": [
+		"kss",
+		"documentation",
+		"styleguide",
+		"gulp"
+	],
+	"author": {
+		"name": "Julia Rechkunova",
+		"email": "julia.rechkunova@gmail.com"
+	},
+	"dependencies": {
+		"catberry-dust": "^3.0.3",
+		"gulp-util": "^3.0.1",
+		"kss": "^1.0.0",
+		"map-stream": "^0.1.0",
+		"promise": "^6.0.0",
+		"through2": "^0.6.2",
+		"vinyl-fs": "^0.3.8"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ZebraCSS/gulp-zebrakss/issues"
+	},
+	"homepage": "https://github.com/ZebraCSS/gulp-zebrakss",
+	"devDependencies": {
+		"gulp": "^3.8.8",
+		"gulp-csslint": "^0.1.5",
+		"gulp-less": "^1.3.6",
+		"gulp-rename": "^1.2.0",
+		"jscs": "^1.6.2",
+		"jshint": "^2.5.6"
+	}
 }

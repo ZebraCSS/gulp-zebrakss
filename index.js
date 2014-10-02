@@ -6,8 +6,8 @@ var through = require('through2'),
 	Promise = require('promise'),
 	Dust = require('catberry-dust').Dust,
 	kss = require('kss'),
-	fsExtra = require('fs-extra'),
-	fs = require('fs');
+	map = require('map-stream'),
+	vinyl = require('vinyl-fs');
 
 global.Promise = Promise;
 
@@ -18,7 +18,6 @@ var PLUGIN_NAME = 'gulp-zebrakss';
 function gulpZebraKSS(options) {
 	options = options || {};
 	options.kssOptions = options.kssOptions || {};
-	options.styleGuideName = options.styleGuideName || 'styleguide';
 	options.styleFileName = options.styleFileName || 'style.css';
 	options.templateDirectory =
 		options.templateDirectory ||
@@ -51,37 +50,46 @@ function gulpZebraKSS(options) {
 			return;
 		}
 
-		options.destDirectory =
-			path.join(options.destDirectory, options.styleGuideName) ||
-			path.join(firstFile.base, options.styleGuideName);
+		var self = this;
 
-		fsExtra.copy(
-			options.templateDirectory,
-			options.destDirectory,
-			function (err) {
-				if (err) {
-					cb(new gutil.PluginError(PLUGIN_NAME, err));
-					return;
-				}
-
-				parseCSSDocs(buffer, options, function (error) {
-					cb(new gutil.PluginError(PLUGIN_NAME, error));
-				});
+		vinyl.src([path.join(options.templateDirectory, '**', '*.*')])
+			.pipe(map(function (file, callback) {
+				processFilesFromTemplate(file, options, buffer,
+					function (error, compiledFile) {
+						self.push(compiledFile);
+						callback(null, compiledFile);
+					}
+				);
+			}))
+			.on('end', function () {
+				cb();
 			});
 	});
 }
 
 /**
- * Parse CSS docs with KSS
- * @param {Array} buffer
+ * Process files from template directory
+ * @param {Object} file
  * @param {Object} options
+ * @param {Array} buffer
  * @param {Function} callback
  */
-function parseCSSDocs(buffer, options, callback) {
+function processFilesFromTemplate (file, options, buffer, callback) {
+	if (path.basename(file.path) !== 'index.html') {
+		callback(null, file);
+		return;
+	}
+
+	parseCSSDocs(file, options, buffer, callback);
+}
+
+/**
+ * Parse CSS docs with KSS
+ */
+function parseCSSDocs(file, options, buffer, callback) {
 	var dust = new Dust(),
 		templateName = 'styleguideTemplate',
-		index = path.join(options.destDirectory, 'index.html'),
-		template = fs.readFileSync(index, 'utf-8'),
+		template = file.contents.toString(),
 		compiledTemplate = dust.templateManager.compile(template);
 
 	dust.templateManager.registerCompiled(templateName, compiledTemplate);
@@ -97,8 +105,8 @@ function parseCSSDocs(buffer, options, callback) {
 
 		dust.render(templateName, dc)
 			.then(function (content) {
-				fs.writeFileSync(index, content);
-				callback();
+				file.contents = new Buffer(content);
+				callback(null, file);
 			}, function (dustError) {
 				callback(dustError);
 			});

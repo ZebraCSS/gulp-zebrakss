@@ -3,6 +3,7 @@
 var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	less = require('gulp-less'),
+	csslint = require('gulp-csslint'),
 	zebrakss = require('./'),
 	path = require('path');
 
@@ -29,9 +30,20 @@ gulp.task('generate-style-guide', function () {
 				//markdown: true,
 				//multiline: true
 			},
-			styleFileName: styleName,
-			destDirectory: path.join(__dirname, destinationDirectory)
-		}));
+			styleFileName: styleName
+		}))
+		.pipe(gulp.dest(path.join(destinationDirectory, 'styleguide')));
+});
+
+// test css
+gulp.task('test', function () {
+	gulp.src(path.join('.', 'lib', 'template', 'assets', 'style.css'))
+		.pipe(less())
+		.pipe(csslint({
+			'box-sizing': false,
+			'fallback-colors': false
+		}))
+		.pipe(csslint.reporter());
 });
 
 gulp.task('build', ['publish-your-site', 'generate-style-guide']);
