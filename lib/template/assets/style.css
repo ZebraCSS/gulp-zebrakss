@@ -1,32 +1,81 @@
+html,
 body {
 	margin: 0;
 	padding: 0;
+	height: 100%;
 }
 
-/**
-Zebra header
+.zebraBody {
+	position: relative;
+	height: 100%;
+	background: #f1f4f8;
+	margin: 0;
+	padding: 0;
+}
+.zebraBody-leftSide,
+.zebraBody-rightSide {
+	height: 100%;
+	overflow: auto;
+}
+.zebraBody-leftSide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 250px;
+	background: #2b333e;
+}
+.zebraBody-rightSide {
+	margin-left: 250px;
+}
 
-Markup: <div class="zebraHeader">Header</div>
+.zebraSections {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.zebraSections-header {
+	height: 70px;
+	margin-bottom: 30px;
+	padding-left: 30px;
+	color: #333c49;
+	font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 70px;
+	font-weight: bold;
+	background: #ffffff;
+	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+.zebraSections-section {
+	display: none;
+	box-sizing: border-box;
+	padding-left: 30px;
+}
 
-Styleguide 1.1
-*/
-.zebraHeader {
-	padding: 20px;
-	background-color: #f5f5f5;
-	border-bottom: 1px solid #e5e5e5;
+.zebraNavigation {
+	margin: 0;
+	padding: 0;
+}
+.zebraNavigation-header {
+	height: 70px;
+	margin-bottom: 30px;
+	padding-left: 30px;
+	color: #ffffff;
+	font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 70px;
+	font-weight: bold;
+	background: #333c49;
+	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+.zebraNavigation-item {
+	display: block;
+	padding: 12px 10px 12px 30px;
+	color: #b0bbca;
+	text-decoration: none;
 	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	text-align: center;
 }
-
-/**
-Zebra content
-
-Markup: <div class="zebraContent">Content</div>
-
-Styleguide 1.2
-*/
-.zebraContent {
-	padding: 20px;
+.zebraNavigation-item.is-active {
+	color: #ffffff;
+	background: #222933;
+	border-left: 3px solid #ffffff;
 }
 
 /**
@@ -76,26 +125,6 @@ Styleguide 2.2
 }
 
 /**
-Zebra link
-
-Markup: <a href="#" class="zebraLink">Link example</div>
-
-Styleguide 3.1
-*/
-.zebraLink,
-.zebraLink:visited {
-	color: #4183c4;
-	text-decoration: none;
-}
-
-.zebraLink:active,
-.zebraLink:hover,
-.zebraLink:focus {
-	color: #4183c4;
-	text-decoration: underline;
-}
-
-/**
 Zebra code
 
 Markup: <code class="zebraCode">Code example</code>
@@ -127,32 +156,4 @@ Styleguide 4.2
 }
 .zebraBlockCode .zebraCode {
 	background-color: transparent;
-}
-
-/**
-Zebra example
-
-Markup: <table class="zebraExample">
-	<tr>
-		<td class="zebraExample-component">Component</td>
-		<td class="zebraExample-modifier">Modifier</td>
-		<td class="zebraExample-description">Description</td>
-	</tr>
-</table>
-
-Styleguide 4.3
-*/
-.zebraExample {
-	display: block;
-	width: 100%;
-}
-.zebraExample-component {
-	width: 50%;
-}
-.zebraExample-modifier {
-	width: 25%;
-	text-align: center;
-}
-.zebraExample-description {
-	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

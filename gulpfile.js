@@ -5,6 +5,7 @@ var gulp = require('gulp'),
 	less = require('gulp-less'),
 	csslint = require('gulp-csslint'),
 	zebrakss = require('./'),
+	browserSync = require('browser-sync'),
 	path = require('path');
 
 var styleName = 'zebra.css',
@@ -32,7 +33,10 @@ gulp.task('generate-style-guide', function () {
 			},
 			styleFileName: styleName
 		}))
-		.pipe(gulp.dest(path.join(destinationDirectory, 'styleguide')));
+		.pipe(gulp.dest(path.join(destinationDirectory, 'styleguide')))
+		.pipe(browserSync.reload({
+			stream: true
+		}));
 });
 
 // test css
@@ -45,6 +49,21 @@ gulp.task('test', function () {
 			'fallback-colors': false
 		}))
 		.pipe(csslint.reporter());
+});
+
+gulp.task('browser-sync', function () {
+	browserSync({
+		server: {
+			baseDir: './build/'
+		}
+	});
+});
+
+gulp.task('server', ['generate-style-guide', 'browser-sync'], function () {
+	gulp.watch(
+		path.join('.', 'lib', 'template', '**', '*.*'),
+		['generate-style-guide']
+	);
 });
 
 gulp.task('build', ['publish-your-site', 'generate-style-guide']);

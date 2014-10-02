@@ -123,6 +123,7 @@ function prepareStyleGuide(kssStyleGuide) {
 		styleguide: {
 			sections: kssStyleGuide.section().map(function (section) {
 				return {
+					alias: 'section-' + section.reference().replace('.', '-'),
 					reference: section.reference(),
 					header: section.header(),
 					markup: section.markup(),

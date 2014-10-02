@@ -15,6 +15,7 @@
 
 	"globals": {
 		"Promise": true,
+		"jQuery": true,
 		"window": true,
 		"describe": true,
 		"it": true
