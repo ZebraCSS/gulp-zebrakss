@@ -5,6 +5,26 @@ body {
 	height: 100%;
 }
 
+/**
+Layout
+
+All layout blocks.
+
+Styleguide 1
+*/
+
+/**
+Body
+
+Main block divided into two parts.
+
+Markup: <section class="zebraBody zebraText">
+	<div class="zebraBody-leftSide">Left side</div>
+	<div class="zebraBody-rightSide">Right side</div>
+</section>
+
+Styleguide 1.1
+*/
 .zebraBody {
 	position: relative;
 	height: 100%;
@@ -22,12 +42,24 @@ body {
 	top: 0;
 	left: 0;
 	width: 250px;
+	color: #ffffff;
 	background: #2b333e;
 }
 .zebraBody-rightSide {
 	margin-left: 250px;
 }
 
+/**
+Sections
+
+Markup: <section class="zebraSections">
+	<div class="zebraSections-header">Header</div>
+	<div class="zebraSections-section">Section</div>
+	<div class="zebraSections-section is-active">Section</div>
+</section>
+
+Styleguide 1.2
+*/
 .zebraSections {
 	height: 100%;
 	margin: 0;
@@ -47,12 +79,29 @@ body {
 .zebraSections-section {
 	display: none;
 	box-sizing: border-box;
-	padding-left: 30px;
+	padding: 0 30px 30px 30px;
+}
+.zebraSections-section.is-active {
+	display: block;
 }
 
+/**
+Navigation
+
+Markup: <section class="zebraNavigation">
+	<div class="zebraNavigation-header">Header</div>
+	<div class="zebraNavigation-item">Item</div>
+	<div class="zebraNavigation-item is-active">Item</div>
+	<div class="zebraNavigation-subItem">Sub Item</div>
+	<div class="zebraNavigation-subItem is-active">Sub Item</div>
+</section>
+
+Styleguide 1.3
+*/
 .zebraNavigation {
 	margin: 0;
 	padding: 0;
+	background: #2b333e;
 }
 .zebraNavigation-header {
 	display: block;
@@ -67,21 +116,58 @@ body {
 	background: #333c49;
 	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
 }
-.zebraNavigation-item {
+.zebraNavigation-item,
+.zebraNavigation-subItem {
 	display: block;
 	padding: 12px 10px 12px 30px;
 	color: #b0bbca;
 	text-decoration: none;
 	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-.zebraNavigation-item.is-active {
+.zebraNavigation-subItem {
+	font-size: 13px;
+	padding-left: 40px;
+}
+.zebraNavigation-item.is-active,
+.zebraNavigation-subItem.is-active {
 	color: #ffffff;
 	background: #222933;
 	border-left: 3px solid #ffffff;
 }
 
 /**
-Zebra text
+Divider
+
+Markup: <div class="zebraDivider"></div>
+
+Styleguide 1.4
+*/
+.zebraDivider {
+	margin: 10px 0 30px 0;
+	border-bottom: 1px solid #eee;
+}
+
+/**
+Paragraph
+
+Markup: <div class="zebraParagraph"></div>
+
+Styleguide 1.5
+*/
+.zebraParagraph {
+	margin-bottom: 30px;
+}
+
+/**
+Typography
+
+Typography on site.
+
+Styleguide 2
+*/
+
+/**
+Text
 
 Markup: <div class="zebraText">Text example</div>
 
@@ -92,7 +178,19 @@ Styleguide 2.1
 }
 
 /**
-Zebra heading
+Description
+
+Markup: <div class="zebraDescription">Description example</div>
+
+Styleguide 2.2
+*/
+.zebraDescription {
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #333c49;
+}
+
+/**
+Heading
 
 Markup: <div class="zebraHeading {$modifiers}">Heading example</div>
 
@@ -100,38 +198,73 @@ zebraHeading--1 - H1.
 zebraHeading--2 - H2.
 zebraHeading--3 - H3.
 
-Styleguide 2.2
+Styleguide 2.3
 */
 .zebraHeading {
 	display: block;
 	font-weight: 500;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-
 .zebraHeading--1 {
 	height: 39px;
 	line-height: 40px;
 	font-size: 36px;
 }
-
 .zebraHeading--2 {
 	height: 33px;
 	line-height: 33px;
 	font-size: 30px;
 }
-
 .zebraHeading--3 {
 	height: 26px;
 	line-height: 26px;
 	font-size: 24px;
 }
+.zebraHeading-link,
+.zebraHeading-link:visited {
+	color: #333c49;
+}
 
 /**
-Zebra code
+Heading with warning
+
+Markup: <div class="zebraHeading {$modifiers}">
+	Heading example
+	<sup class="zebraHeading-warning">warning</sup>
+</div>
+
+zebraHeading--1 - H1.
+zebraHeading--2 - H2.
+zebraHeading--3 - H3.
+
+Styleguide 2.4
+*/
+.zebraHeading-warning {
+	box-sizing: border-box;
+	vertical-align: top;
+	padding: 3px;
+	margin: 0 0 0 10px;
+	background-color: #f6f3d5;
+	color: #96904d;
+	font: 12px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-style: italic;
+	border-radius: 3px;
+}
+
+/**
+Code
+
+Show code examples.
+
+Styleguide 3
+*/
+
+/**
+Inline code
 
 Markup: <code class="zebraCode">Code example</code>
 
-Styleguide 4.1
+Styleguide 3.1
 */
 .zebraCode {
 	box-sizing: border-box;
@@ -142,20 +275,34 @@ Styleguide 4.1
 }
 
 /**
-Zebra code
+Block code
 
 Markup: <pre class="zebraBlockCode">
-	<code>Code example</code>
+	<code class="zebraCode">Code example</code>
 </pre>
 
-Styleguide 4.2
+Styleguide 3.2
 */
 .zebraBlockCode {
-	padding: 10px;
-	margin: 0;
-	background-color: rgba(0,0,0,0.04);
+	position: relative;
+	padding: 16px;
+	margin: 10px 0;
+	background: #f1f4f8;
+	box-shadow:
+		0 1px 2px 1px rgba(0, 0, 0, 0.1),
+		0 -1px 2px 1px rgba(0, 0, 0, 0.1);
 	border-radius: 3px;
+	overflow: auto;
 }
 .zebraBlockCode .zebraCode {
 	background-color: transparent;
+}
+.zebraBlockCode-title {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	height: 10px;
+	font-weight: bold;
+	font-size: 10px;
+	background: #f1f4f8;
 }

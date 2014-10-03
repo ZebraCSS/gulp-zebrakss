@@ -16,7 +16,11 @@
 			{.brand}
 		</a>
 		{#.styleguide.sections}
-		<a class="zebraNavigation-item" href="#{.alias}">{.header}</a>
+			{?.isRoot}
+				<a class="zebraNavigation-item" href="#{.alias}">{.header}</a>
+			{:else}
+				<a class="zebraNavigation-item zebraNavigation-subItem" href="#{.alias}">{.header}</a>
+			{/.isRoot}
 		{/.styleguide.sections}
 	</div>
 </section>
@@ -27,72 +31,82 @@
 		</div>
 		<div class="zebraSections-section zebraText" id="overview-content">
 			{.overview}
+			{#styleguide.sectionsTree}
+				<h3 class="zebraHeading zebraHeading--3">
+					{.reference} <a class="zebraHeading-link" href="#{.alias}">{.header}</a>
+					{?.isDeprecated}
+					<sup class="zebraHeading-warning">deprecated</sup>
+					{/.isDeprecated}
+					{?.isExperimental}
+					<sup class="zebraHeading-warning">experimental</sup>
+					{/.isExperimental}
+				</h3>
+				<p class="zebraDescription">{.description|s}</p>
+			{/styleguide.sectionsTree}
 		</div>
 		{#styleguide.sections}
 		<div class="zebraSections-section" id="{.alias}-content">
-			<h2 class="zebraHeading zebraHeading--2">{.reference} {.header}</h2>
-			<div class="zebraText">
+			<h2 class="zebraHeading zebraHeading--2">
+				{.reference} {.header}
 				{?.isDeprecated}
-				<p>
-					<i>Deprecated</i>
-				</p>
+					<sup class="zebraHeading-warning">deprecated</sup>
 				{/.isDeprecated}
 				{?.isExperimental}
-				<p>
-					<i>Experimental</i>
-				</p>
+					<sup class="zebraHeading-warning">experimental</sup>
 				{/.isExperimental}
+			</h2>
 
-				<p>{.description|s}</p>
+			<div class="zebraDescription">{.description|s}</div>
+			<div class="zebraDivider"></div>
+
+			<div class="zebraParagraph">
+				{.markup|s}
 			</div>
 
-		<pre class="zebraBlockCode">
-			<code class="zebraCode">
-				{.markup}
-			</code>
-		</pre>
+			{?.markup}
+				<div class="zebraParagraph">
+					<pre class="zebraBlockCode">
+						<code class="zebraCode">
+							{.markup}
+						</code>
+					</pre>
+				</div>
+			{/.markup}
 
 			{?.modifiers}
-			<p>
-			<table class="zebraExample">
-				{#.modifiers}
-				<tr>
-					<td class="zebraExample-component">
+				<div class="zebraParagraph">
+					<div class="zebraParagraph">
+						{#.modifiers}
 						<div>
 							{.markup|s}
 						</div>
-					</td>
-					<td class="zebraExample-modifier">
-						<code class="zebraCode">
-							{.name}
-						</code>
-					</td>
-					<td class="zebraExample-description">
-						{.description|s}
-					</td>
-				</tr>
-				{/.modifiers}
-			</table>
-			</p>
-			{:else}
-			<p>
-			<table class="zebraExample">
-				<tr>
-					<td class="zebraExample-component">
-						<div>
-							{.markup|s}
-						</div>
-					</td>
-					<td class="zebraExample-modifier">
-
-					</td>
-					<td class="zebraExample-description">
-
-					</td>
-				</tr>
-			</table>
-			</p>
+						{/.modifiers}
+					</div>
+					{#.modifiers}
+						<pre class="zebraBlockCode">
+							<div class="zebraBlockCode-title">
+								[{.name}] {.description|s}
+							</div>
+							<code class="zebraCode">
+								{.markup}
+							</code>
+						</pre>
+					{/.modifiers}
+				</div>
 			{/.modifiers}
+
+			{#.subSections}
+				<h3 class="zebraHeading zebraHeading--3">
+					{.reference} <a class="zebraHeading-link" href="#{.alias}">{.header}</a>
+					{?.isDeprecated}
+						<sup class="zebraHeading-warning">deprecated</sup>
+					{/.isDeprecated}
+					{?.isExperimental}
+						<sup class="zebraHeading-warning">experimental</sup>
+					{/.isExperimental}
+				</h3>
+				<p class="zebraDescription">{.description|s}</p>
+			{/.subSections}
 		</div>
 		{/styleguide.sections}
 	</div>

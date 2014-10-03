@@ -46,7 +46,8 @@ gulp.task('test', function () {
 		.pipe(csslint({
 			// https://github.com/CSSLint/csslint/wiki/Rules-by-ID
 			'box-sizing': false,
-			'fallback-colors': false
+			'fallback-colors': false,
+			'adjoining-classes': false
 		}))
 		.pipe(csslint.reporter());
 });

@@ -78,7 +78,7 @@ function gulpZebraKSS(options) {
  * @param {Array} buffer
  * @param {Function} callback
  */
-function processFilesFromTemplate (file, options, buffer, callback) {
+function processFilesFromTemplate(file, options, buffer, callback) {
 	if (path.basename(file.path) !== 'index.html') {
 		callback(null, file);
 		return;
@@ -125,32 +125,66 @@ function parseCSSDocs(file, options, buffer, callback) {
 /**
  * Use KSS Module API
  * @param {KSSStyleGuide} kssStyleGuide
- * @returns {{styleguide: {sections: *}}}
+ * @returns {{styleguide: {sections: Array, sectionsTree: Array}}}
  */
 function prepareStyleGuide(kssStyleGuide) {
+	var allSections = kssStyleGuide.section();
+
+	allSections = allSections.map(function (kssSection) {
+		return prepareSection(kssStyleGuide, kssSection);
+	});
+
 	return {
 		styleguide: {
-			sections: kssStyleGuide.section().map(function (section) {
-				return {
-					alias: 'section-' + section.reference().replace('.', '-'),
-					reference: section.reference(),
-					header: section.header(),
-					markup: section.markup(),
-					description: section.description(),
-					isDeprecated: section.deprecated(),
-					isExperimental: section.experimental(),
-					modifiers: section.modifiers().map(function (modifier) {
-						return {
-							name: modifier.name(),
-							description: modifier.description(),
-							className: modifier.className(),
-							markup: modifier.markup()
-						};
-					})
-				};
+			sections: allSections,
+			sectionsTree: allSections.filter(function (section) {
+				return section.isRoot;
 			})
 		}
 	};
+}
+
+/**
+ * Prepare section and subsections
+ * @param {KSSStyleGuide} kssStyleGuide
+ * @param {KSSSection} kssSection
+ * @returns {{isRoot: boolean, subSections: Array, alias: string,
+ * reference: string, header: string, markup: string,
+ * description: string, isDeprecated: boolean,
+ * isExperimental: boolean, modifiers: Array}}
+ */
+function prepareSection(kssStyleGuide, kssSection) {
+	var section = {
+		isRoot: false,
+		subSections: [],
+		alias: 'section-' + kssSection.reference().replace('.', '-'),
+		reference: kssSection.reference(),
+		header: kssSection.header(),
+		markup: kssSection.markup(),
+		description: kssSection.description()
+			.replace(/^(<p>)/, '').replace(/(<\/p>)$/, ''),
+		isDeprecated: kssSection.deprecated(),
+		isExperimental: kssSection.experimental(),
+		modifiers: kssSection.modifiers().map(function (modifier) {
+			return {
+				name: modifier.name(),
+				description: modifier.description()
+					.replace(/^(<p>)/, '').replace(/(<\/p>)$/, ''),
+				className: modifier.className(),
+				markup: modifier.markup()
+			};
+		})
+	};
+
+	if (/^\d+$/.test(section.reference)) {
+		section.isRoot = true;
+		section.subSections = kssStyleGuide.section(section.reference + '.*')
+			.map(function (kssSection) {
+				return prepareSection(kssStyleGuide, kssSection);
+			});
+	}
+
+	return section;
 }
 
 // exporting the plugin main function
