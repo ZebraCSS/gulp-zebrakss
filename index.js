@@ -24,7 +24,8 @@ function gulpZebraKSS(options) {
 		options.templateDirectory ||
 		path.join(__dirname, 'lib', 'template');
 	options.brand = options.brand || 'ZebraCSS';
-	options.overview = options.overview || path.join(__dirname, 'lib', 'template', 'overview.md');
+	options.overview = options.overview ||
+		path.join(__dirname, 'lib', 'template', 'overview.md');
 
 	var buffer = [],
 		firstFile = null;

@@ -40,6 +40,9 @@ gulp.task('generate-style-guide', function () {
 				//multiline: true
 			},
 			styleFile: styleName
+			// overview: path.join('.', 'lib', 'template', 'overview.md')
+			// templateDirectory: path.join('.', 'lib', 'template')
+			// brand: 'ZebraCSS'
 		}))
 		.pipe(gulp.dest(path.join(destinationDirectory, 'styleguide')));
 });
