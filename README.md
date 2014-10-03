@@ -6,12 +6,12 @@ This plugin is based on [kss-node](https://github.com/hughsk/kss-node) and gener
 
 [ZebraKSS Demo](http://zebracss.github.io/gulp-zebrakss/) for `./test/demo/index.less`.
 
-Install:
+##Install
 ```
 npm install gulp-zebrakss --save-dev
 ```
 
-Example:
+##Example
 
 ```js
 'use strict';
@@ -57,3 +57,5 @@ gulp.task('default', ['build']);
 ```
 
 Example will generate styleguide in ``./build/styleguide/`` and referenced to ``./build/zebra.css``.
+
+License	MIT

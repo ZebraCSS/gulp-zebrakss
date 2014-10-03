@@ -1,6 +1,6 @@
 {
 	"name": "gulp-zebrakss",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Gulp plugin for KSS (Knyle Style Sheets)",
 	"main": "index.js",
 	"scripts": {
