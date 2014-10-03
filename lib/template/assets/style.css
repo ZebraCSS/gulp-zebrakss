@@ -8,7 +8,7 @@ body {
 .zebraBody {
 	position: relative;
 	height: 100%;
-	background: #f1f4f8;
+	background: #ffffff;
 	margin: 0;
 	padding: 0;
 }
@@ -41,7 +41,7 @@ body {
 	font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	line-height: 70px;
 	font-weight: bold;
-	background: #ffffff;
+	background: #f1f4f8;
 	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
 }
 .zebraSections-section {
@@ -55,6 +55,7 @@ body {
 	padding: 0;
 }
 .zebraNavigation-header {
+	display: block;
 	height: 70px;
 	margin-bottom: 30px;
 	padding-left: 30px;
@@ -62,6 +63,7 @@ body {
 	font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	line-height: 70px;
 	font-weight: bold;
+	text-decoration: none;
 	background: #333c49;
 	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
 }

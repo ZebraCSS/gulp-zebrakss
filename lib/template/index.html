@@ -5,16 +5,16 @@
 	<title>Living Style Guide</title>
 	<base href="./"/>
 	<link rel="stylesheet" href="./assets/style.css">
-	<link rel="stylesheet" href="../{styleFileName}">
+	<link rel="stylesheet" href="../{styleFile}">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="./assets/sections.js"></script>
 </head>
 <body class="zebraBody">
 <section class="zebraBody-leftSide">
 	<div class="zebraNavigation">
-		<div class="zebraNavigation-header">
-			ZebraCSS
-		</div>
+		<a href="./" class="zebraNavigation-header">
+			{.brand}
+		</a>
 		{#.styleguide.sections}
 		<a class="zebraNavigation-item" href="#{.alias}">{.header}</a>
 		{/.styleguide.sections}
@@ -25,8 +25,11 @@
 		<div class="zebraSections-header">
 			Living Style Guide
 		</div>
+		<div class="zebraSections-section zebraText" id="overview-content">
+			{.overview}
+		</div>
 		{#styleguide.sections}
-		<div class="zebraSections-section" id="{.alias}">
+		<div class="zebraSections-section" id="{.alias}-content">
 			<h2 class="zebraHeading zebraHeading--2">{.reference} {.header}</h2>
 			<div class="zebraText">
 				{?.isDeprecated}

@@ -7,7 +7,8 @@ var through = require('through2'),
 	Dust = require('catberry-dust').Dust,
 	kss = require('kss'),
 	map = require('map-stream'),
-	vinyl = require('vinyl-fs');
+	vinyl = require('vinyl-fs'),
+	fs = require('fs');
 
 global.Promise = Promise;
 
@@ -18,10 +19,12 @@ var PLUGIN_NAME = 'gulp-zebrakss';
 function gulpZebraKSS(options) {
 	options = options || {};
 	options.kssOptions = options.kssOptions || {};
-	options.styleFileName = options.styleFileName || 'style.css';
+	options.styleFile = options.styleFile || 'style.css';
 	options.templateDirectory =
 		options.templateDirectory ||
 		path.join(__dirname, 'lib', 'template');
+	options.brand = options.brand || 'ZebraCSS';
+	options.overview = options.overview || path.join(__dirname, 'lib', 'template', 'overview.md');
 
 	var buffer = [],
 		firstFile = null;
@@ -101,7 +104,12 @@ function parseCSSDocs(file, options, buffer, callback) {
 		}
 
 		var dc = prepareStyleGuide(styleguide);
-		dc.styleFileName = options.styleFileName;
+		dc.styleFile = options.styleFile;
+		dc.brand = options.brand;
+
+		if (options.overview) {
+			dc.overview = fs.readFileSync(options.overview);
+		}
 
 		dust.render(templateName, dc)
 			.then(function (content) {

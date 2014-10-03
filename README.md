@@ -39,7 +39,7 @@ gulp.task('generate-style-guide', function () {
 				//markdown: true,
 				//multiline: true
 			},
-			styleFileName: styleName
+			styleFile: styleName
 		}))
 		.pipe(gulp.dest(path.join(destinationDirectory, 'styleguide')));
 });

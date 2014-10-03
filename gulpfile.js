@@ -31,7 +31,7 @@ gulp.task('generate-style-guide', function () {
 				//markdown: true,
 				//multiline: true
 			},
-			styleFileName: styleName
+			styleFile: styleName
 		}))
 		.pipe(gulp.dest(path.join(destinationDirectory, 'styleguide')))
 		.pipe(browserSync.reload({
@@ -64,6 +64,7 @@ gulp.task('server', ['generate-style-guide', 'browser-sync'], function () {
 		path.join('.', 'lib', 'template', '**', '*.*'),
 		['generate-style-guide']
 	);
+	gulp.watch(path.join('.', 'index.js'), ['generate-style-guide']);
 });
 
 gulp.task('build', ['publish-your-site', 'generate-style-guide']);
