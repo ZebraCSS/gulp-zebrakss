@@ -1,0 +1,171 @@
+/*
+Buttons
+
+A majority of buttons in the site are built from the same base class.
+
+Markup: <a href="#" class="button {$modifiers}">Link Button</a>
+<button class="button {$modifiers}">Button Element</button>
+<input type="button" class="button {$modifiers}" value="input[type='button']"/>
+
+.primary - Indicate that the button is the primary feature of this form.
+.remove - Indicate that the button will remove a feature, or other negative connotations.
+:hover - Highlight the button when hovered.
+:disabled - Make the button change appearance to reflect it being disabled.
+:active - "Press" the button down when clicked.
+
+Styleguide 1.1
+*/
+.button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: lowercase;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: #aaaaaa;
+  border: 1px solid #777777;
+  text-shadow: 0 2px 0 #919191;
+  box-shadow: 0 3px 0 0 #5e5e5e, inset 0 1px 3px rgba(255, 255, 255, 0.4);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.125) 0%, rgba(0, 0, 0, 0.125) 100%);
+}
+.button:visited,
+.button:hover,
+.button:active {
+  color: #fff;
+}
+.button:hover {
+  background-color: #bebebe;
+  border: 1px solid #8b8b8b;
+  text-shadow: 0 2px 0 #a5a5a5;
+  box-shadow: 0 3px 0 0 #727272, inset 0 1px 3px rgba(255, 255, 255, 0.4);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.125) 0%, rgba(0, 0, 0, 0.125) 100%);
+  border: 1px solid #777777;
+}
+.button:active {
+  position: relative;
+  top: 3px;
+  box-shadow: none!important;
+}
+.button.primary {
+  background-color: #55cc44;
+  border: 1px solid #318624;
+  text-shadow: 0 2px 0 #3fae2f;
+  box-shadow: 0 3px 0 0 #225e19, inset 0 1px 3px rgba(255, 255, 255, 0.4);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.125) 0%, rgba(0, 0, 0, 0.125) 100%);
+}
+.button:disabled {
+  background-color: #dddddd;
+  border: 1px solid #aaaaaa;
+  text-shadow: 0 2px 0 #c4c4c4;
+  box-shadow: 0 3px 0 0 #919191, inset 0 1px 3px rgba(255, 255, 255, 0.4);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.125) 0%, rgba(0, 0, 0, 0.125) 100%);
+  cursor: default;
+}
+.button.remove {
+  background-color: #cc5544;
+  border: 1px solid #863124;
+  text-shadow: 0 2px 0 #ae3f2f;
+  box-shadow: 0 3px 0 0 #5e2219, inset 0 1px 3px rgba(255, 255, 255, 0.4);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.125) 0%, rgba(0, 0, 0, 0.125) 100%);
+}
+/*
+Text Input
+
+Below are the text-oriented form elements used on the site.
+
+:hover - Highlight the text box when hovering.
+:focus - Similar to `:hover`, however it should demand more attention than when an input is simply hovered.
+:disabled - When disabled, the input's appearance should reflect as such.
+
+Markup: <input type="text" class="{$modifiers}" value="Text"/>
+
+Styleguide 2.1
+*/
+input[type='text'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 8px;
+  border: 1px solid #aaa;
+  background-color: #eee;
+  outline: 0;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+input[type='text']:hover {
+  border-color: #999;
+  background-color: #f0f0f0;
+}
+input[type='text']:focus {
+  border-color: #89e;
+  background-color: #fff;
+  box-shadow: inset 1px 1px 2px rgba(20, 20, 120, 0.3);
+}
+input[type='text']:disabled {
+  border-color: #ccc;
+  background-color: #eee;
+  color: #999;
+}
+/*
+Label/Textbox Pairs
+
+All labelled textboxes should be included in a wrapper `<div>` element for both layout
+convenience and specific styling.
+
+Markup: <div class="mod-input text {$modifiers}">
+     <label>Text Label</label>
+     <input type="text" value="Text Input"/>
+</div>
+
+.disabled - To be used when the text input inside is expected to be disabled.
+.invalid - To be used if the input has failed a validation check.
+.valid - To be used if the input has passed a validation check (intended for live validation in particular).
+
+Styleguide 2.2
+*/
+.mod-input {
+  position: relative;
+  display: block;
+}
+.mod-input > label {
+  width: 45%;
+  font-weight: bold;
+}
+.mod-input > input,
+.mod-input > label {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+.mod-input.disabled {
+  color: #888;
+}
+.mod-input.disabled input {
+  border-color: #ccc;
+  background-color: #eee;
+  color: #999;
+}
+.mod-input.invalid label {
+  color: #911;
+}
+.mod-input.invalid input {
+  border-color: #e65;
+  background-color: #fdd;
+}
+.mod-input.valid label {
+  color: #191;
+}
+.mod-input.valid input {
+  border-color: #6e5;
+  background-color: #dfd;
+}

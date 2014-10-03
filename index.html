@@ -1,0 +1,72 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Living Style Guide</title><base href="./"/><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="demo.css"><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script src="assets/sections.js"></script></head><body class="zebraBody"><section class="zebraBody-leftSide"><div class="zebraNavigation"><a href="" class="zebraNavigation-header">ZebraCSS</a><a class="zebraNavigation-item" href="#section-1">Buttons</a><a class="zebraNavigation-item zebraNavigation-subItem" href="#section-1-1">Main button</a><a class="zebraNavigation-item" href="#section-2">Text</a><a class="zebraNavigation-item zebraNavigation-subItem" href="#section-2-1">Text Input</a><a class="zebraNavigation-item zebraNavigation-subItem" href="#section-2-2">Label/Textbox Pairs</a></div></section><section class="zebraBody-rightSide"><div class="zebraSections"><div class="zebraSections-header">Living Style Guide</div><div class="zebraSections-section zebraText" id="overview-content">ZebraCSS Living Style Guide<h3 class="zebraHeading zebraHeading--3">1 <a class="zebraHeading-link" href="#section-1">Buttons</a></h3><p class="zebraDescription">These CSS styles from kss-node</p>
+</p><h3 class="zebraHeading zebraHeading--3">2 <a class="zebraHeading-link" href="#section-2">Text</a></h3><p class="zebraDescription">These CSS styles from kss-node</p>
+</p></div><div class="zebraSections-section" id="section-1-content"><h2 class="zebraHeading zebraHeading--2">1 Buttons</h2><div class="zebraDescription">These CSS styles from kss-node</p>
+</div><div class="zebraDivider"></div><div class="zebraParagraph"></div><h3 class="zebraHeading zebraHeading--3">1.1 <a class="zebraHeading-link" href="#section-1-1">Main button</a></h3><p class="zebraDescription">A majority of buttons in the site are built from the same base class.</p>
+</p></div><div class="zebraSections-section" id="section-1-1-content"><h2 class="zebraHeading zebraHeading--2">1.1 Main button</h2><div class="zebraDescription">A majority of buttons in the site are built from the same base class.</p>
+</div><div class="zebraDivider"></div><div class="zebraParagraph"><a href="#" class="button {$modifiers}">Link Button</a>
+<button class="button {$modifiers}">Button Element</button>
+<input type="button" class="button {$modifiers}" value="input[type='button']"/></div><div class="zebraParagraph"><pre class="zebraBlockCode"><code class="zebraCode">&lt;a href=&quot;#&quot; class=&quot;button {$modifiers}&quot;&gt;Link Button&lt;/a&gt;
+&lt;button class=&quot;button {$modifiers}&quot;&gt;Button Element&lt;/button&gt;
+&lt;input type=&quot;button&quot; class=&quot;button {$modifiers}&quot; value=&quot;input[type=&#39;button&#39;]&quot;/&gt;</code></pre></div><div class="zebraParagraph"><div class="zebraParagraph"><div><a href="#" class="button primary">Link Button</a>
+<button class="button primary">Button Element</button>
+<input type="button" class="button primary" value="input[type='button']"/></div><div><a href="#" class="button remove">Link Button</a>
+<button class="button remove">Button Element</button>
+<input type="button" class="button remove" value="input[type='button']"/></div><div><a href="#" class="button pseudo-class-hover">Link Button</a>
+<button class="button pseudo-class-hover">Button Element</button>
+<input type="button" class="button pseudo-class-hover" value="input[type='button']"/></div><div><a href="#" class="button pseudo-class-disabled">Link Button</a>
+<button class="button pseudo-class-disabled">Button Element</button>
+<input type="button" class="button pseudo-class-disabled" value="input[type='button']"/></div><div><a href="#" class="button pseudo-class-active">Link Button</a>
+<button class="button pseudo-class-active">Button Element</button>
+<input type="button" class="button pseudo-class-active" value="input[type='button']"/></div></div><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[.primary] Indicate that the button is the primary feature of this form.</p>
+</div><code class="zebraCode">&lt;a href=&quot;#&quot; class=&quot;button primary&quot;&gt;Link Button&lt;/a&gt;
+&lt;button class=&quot;button primary&quot;&gt;Button Element&lt;/button&gt;
+&lt;input type=&quot;button&quot; class=&quot;button primary&quot; value=&quot;input[type=&#39;button&#39;]&quot;/&gt;</code></pre><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[.remove] Indicate that the button will remove a feature, or other negative connotations.</p>
+</div><code class="zebraCode">&lt;a href=&quot;#&quot; class=&quot;button remove&quot;&gt;Link Button&lt;/a&gt;
+&lt;button class=&quot;button remove&quot;&gt;Button Element&lt;/button&gt;
+&lt;input type=&quot;button&quot; class=&quot;button remove&quot; value=&quot;input[type=&#39;button&#39;]&quot;/&gt;</code></pre><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[:hover] Highlight the button when hovered.</p>
+</div><code class="zebraCode">&lt;a href=&quot;#&quot; class=&quot;button pseudo-class-hover&quot;&gt;Link Button&lt;/a&gt;
+&lt;button class=&quot;button pseudo-class-hover&quot;&gt;Button Element&lt;/button&gt;
+&lt;input type=&quot;button&quot; class=&quot;button pseudo-class-hover&quot; value=&quot;input[type=&#39;button&#39;]&quot;/&gt;</code></pre><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[:disabled] Make the button change appearance to reflect it being disabled.</p>
+</div><code class="zebraCode">&lt;a href=&quot;#&quot; class=&quot;button pseudo-class-disabled&quot;&gt;Link Button&lt;/a&gt;
+&lt;button class=&quot;button pseudo-class-disabled&quot;&gt;Button Element&lt;/button&gt;
+&lt;input type=&quot;button&quot; class=&quot;button pseudo-class-disabled&quot; value=&quot;input[type=&#39;button&#39;]&quot;/&gt;</code></pre><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[:active] &quot;Press&quot; the button down when clicked.</p>
+</div><code class="zebraCode">&lt;a href=&quot;#&quot; class=&quot;button pseudo-class-active&quot;&gt;Link Button&lt;/a&gt;
+&lt;button class=&quot;button pseudo-class-active&quot;&gt;Button Element&lt;/button&gt;
+&lt;input type=&quot;button&quot; class=&quot;button pseudo-class-active&quot; value=&quot;input[type=&#39;button&#39;]&quot;/&gt;</code></pre></div></div><div class="zebraSections-section" id="section-2-content"><h2 class="zebraHeading zebraHeading--2">2 Text</h2><div class="zebraDescription">These CSS styles from kss-node</p>
+</div><div class="zebraDivider"></div><div class="zebraParagraph"></div><h3 class="zebraHeading zebraHeading--3">2.1 <a class="zebraHeading-link" href="#section-2-1">Text Input</a></h3><p class="zebraDescription">Below are the text-oriented form elements used on the site.</p>
+</p><h3 class="zebraHeading zebraHeading--3">2.2 <a class="zebraHeading-link" href="#section-2-2">Label/Textbox Pairs</a></h3><p class="zebraDescription">All labelled textboxes should be included in a wrapper <code>&lt;div&gt;</code> element for both layout
+convenience and specific styling.</p>
+</p></div><div class="zebraSections-section" id="section-2-1-content"><h2 class="zebraHeading zebraHeading--2">2.1 Text Input</h2><div class="zebraDescription">Below are the text-oriented form elements used on the site.</p>
+</div><div class="zebraDivider"></div><div class="zebraParagraph"><input type="text" class="{$modifiers}" value="Text"/></div><div class="zebraParagraph"><pre class="zebraBlockCode"><code class="zebraCode">&lt;input type=&quot;text&quot; class=&quot;{$modifiers}&quot; value=&quot;Text&quot;/&gt;</code></pre></div><div class="zebraParagraph"><div class="zebraParagraph"><div><input type="text" class="pseudo-class-hover" value="Text"/></div><div><input type="text" class="pseudo-class-focus" value="Text"/></div><div><input type="text" class="pseudo-class-disabled" value="Text"/></div></div><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[:hover] Highlight the text box when hovering.</p>
+</div><code class="zebraCode">&lt;input type=&quot;text&quot; class=&quot;pseudo-class-hover&quot; value=&quot;Text&quot;/&gt;</code></pre><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[:focus] Similar to <code>:hover</code>, however it should demand more attention than when an input is simply hovered.</p>
+</div><code class="zebraCode">&lt;input type=&quot;text&quot; class=&quot;pseudo-class-focus&quot; value=&quot;Text&quot;/&gt;</code></pre><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[:disabled] When disabled, the input&apos;s appearance should reflect as such.</p>
+</div><code class="zebraCode">&lt;input type=&quot;text&quot; class=&quot;pseudo-class-disabled&quot; value=&quot;Text&quot;/&gt;</code></pre></div></div><div class="zebraSections-section" id="section-2-2-content"><h2 class="zebraHeading zebraHeading--2">2.2 Label/Textbox Pairs</h2><div class="zebraDescription">All labelled textboxes should be included in a wrapper <code>&lt;div&gt;</code> element for both layout
+convenience and specific styling.</p>
+</div><div class="zebraDivider"></div><div class="zebraParagraph"><div class="mod-input text {$modifiers}">
+     <label>Text Label</label>
+     <input type="text" value="Text Input"/>
+</div></div><div class="zebraParagraph"><pre class="zebraBlockCode"><code class="zebraCode">&lt;div class=&quot;mod-input text {$modifiers}&quot;&gt;
+     &lt;label&gt;Text Label&lt;/label&gt;
+     &lt;input type=&quot;text&quot; value=&quot;Text Input&quot;/&gt;
+&lt;/div&gt;</code></pre></div><div class="zebraParagraph"><div class="zebraParagraph"><div><div class="mod-input text disabled">
+     <label>Text Label</label>
+     <input type="text" value="Text Input"/>
+</div></div><div><div class="mod-input text invalid">
+     <label>Text Label</label>
+     <input type="text" value="Text Input"/>
+</div></div><div><div class="mod-input text valid">
+     <label>Text Label</label>
+     <input type="text" value="Text Input"/>
+</div></div></div><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[.disabled] To be used when the text input inside is expected to be disabled.</p>
+</div><code class="zebraCode">&lt;div class=&quot;mod-input text disabled&quot;&gt;
+     &lt;label&gt;Text Label&lt;/label&gt;
+     &lt;input type=&quot;text&quot; value=&quot;Text Input&quot;/&gt;
+&lt;/div&gt;</code></pre><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[.invalid] To be used if the input has failed a validation check.</p>
+</div><code class="zebraCode">&lt;div class=&quot;mod-input text invalid&quot;&gt;
+     &lt;label&gt;Text Label&lt;/label&gt;
+     &lt;input type=&quot;text&quot; value=&quot;Text Input&quot;/&gt;
+&lt;/div&gt;</code></pre><pre class="zebraBlockCode"><div class="zebraBlockCode-title">[.valid] To be used if the input has passed a validation check (intended for live validation in particular).</p>
+</div><code class="zebraCode">&lt;div class=&quot;mod-input text valid&quot;&gt;
+     &lt;label&gt;Text Label&lt;/label&gt;
+     &lt;input type=&quot;text&quot; value=&quot;Text Input&quot;/&gt;
+&lt;/div&gt;</code></pre></div></div></div></section></body></html>
