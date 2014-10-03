@@ -4,7 +4,7 @@ Gulp plugin for KSS ([Knyle Stype Sheets](http://warpspire.com/kss/)) documentat
 
 This plugin is based on [kss-node](https://github.com/hughsk/kss-node) and generates a styleguide based on code documentation.
 
-[ZebraKSS Demo](http://zebracss.github.io/gulp-zebrakss/) for `./test/demo/index.less``.
+[ZebraKSS Demo](http://zebracss.github.io/gulp-zebrakss/) for `./test/demo/index.less`.
 
 Example:
 
