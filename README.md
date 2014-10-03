@@ -6,6 +6,11 @@ This plugin is based on [kss-node](https://github.com/hughsk/kss-node) and gener
 
 [ZebraKSS Demo](http://zebracss.github.io/gulp-zebrakss/) for `./test/demo/index.less`.
 
+Install:
+```
+npm install gulp-zebrakss --save-dev
+```
+
 Example:
 
 ```js
