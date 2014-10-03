@@ -60,13 +60,6 @@ gulp.task('browser-sync', function () {
 	});
 });
 
-gulp.task('demo', function () {
-	sourceStyles = path.join('.', 'test', 'demo', 'index.less');
-	destinationDirectory = path.join('.', 'demo');
-	gulp.start('publish-your-site');
-	gulp.start('generate-style-guide');
-});
-
 gulp.task('server', ['generate-style-guide', 'browser-sync'], function () {
 	gulp.watch(
 		path.join('.', 'lib', 'template', '**', '*.*'),

@@ -1,1 +1,0 @@
-ZebraCSS Living Style Guide
